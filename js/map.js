@@ -46,7 +46,7 @@
 		.layers(
 			{ 'Lichte achtergrond': light, 'Donkere achtergrond': dark },
 			{},
-			{ collapsed: false }
+			{ collapsed: false, sortLayers: true }
 		)
 		.addTo(map);
 
@@ -64,7 +64,7 @@
 										: feature.properties.FIETSPOT > 250
 										? '#eca154'
 										: '#f3c291',
-								weight: 3 + ((feature.properties.FIETSPOT / maxPotential) * 10),
+								weight: 3 + (feature.properties.FIETSPOT / maxPotential) * 10,
 							}),
 					  }
 					: { style: { color: file.color } };
