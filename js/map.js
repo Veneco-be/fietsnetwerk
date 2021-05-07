@@ -51,7 +51,7 @@
 
 	const getData = async () => {
 		files.forEach(async (file) => {
-			const res = await fetch(`/data/${file.filename}.geojson`);
+			const res = await fetch(`data/${file.filename}.geojson`);
 			controlLayers.addOverlay(
 				L.geoJSON(await res.json(), { style: { color: file.color } }),
 				file.title
