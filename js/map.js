@@ -1,4 +1,5 @@
 (async () => {
+	const maxPotential = 5190;
 	const tilesOptions = {
 		maxZoom: 18,
 		attribution:
@@ -52,8 +53,24 @@
 	const getData = async () => {
 		files.forEach(async (file) => {
 			const res = await fetch(`data/${file.filename}.geojson`);
+
+			const options =
+				file.filename === 'fietspotentieel_volledig'
+					? {
+							style: (feature) => ({
+								color:
+									feature.properties.FIETSPOT > 500
+										? '#e78523'
+										: feature.properties.FIETSPOT > 250
+										? '#eca154'
+										: '#f3c291',
+								weight: 3 + ((feature.properties.FIETSPOT / maxPotential) * 10),
+							}),
+					  }
+					: { style: { color: file.color } };
+
 			controlLayers.addOverlay(
-				L.geoJSON(await res.json(), { style: { color: file.color } }),
+				L.geoJSON(await res.json(), options),
 				file.title
 			);
 		});
