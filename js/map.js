@@ -1,12 +1,12 @@
 (async () => {
 	const tilesOptions = {
-			maxZoom: 18,
-			attribution:
-				'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-				'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			id: 'mapbox/streets-v11',
-			tileSize: 512,
-			zoomOffset: -1,
+		maxZoom: 18,
+		attribution:
+			'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1,
 	};
 
 	const light = L.tileLayer(
@@ -25,12 +25,20 @@
 		layers: [light],
 	});
 
-	const filenames = [
-		'BFF',
-		'LFF',
-		'fietspotentieel_volledig',
-		'Fietssnelweg',
-		'toer_recr_netwerk',
+	const files = [
+		{ filename: 'BFF', color: '#3eb1c8', title: 'BFF' },
+		{ filename: 'LFF', color: '#a4c8e1', title: 'LFF' },
+		{
+			filename: 'fietspotentieel_volledig',
+			color: '#eca154',
+			title: 'Fietspotentieel',
+		},
+		{ filename: 'Fietssnelweg', color: '#a4c8e1', title: 'Fietssnelweg' },
+		{
+			filename: 'toer_recr_netwerk',
+			color: '#a9c47f',
+			title: 'Toeristisch netwerk',
+		},
 	];
 
 	const controlLayers = L.control
@@ -40,11 +48,14 @@
 			{ collapsed: false }
 		)
 		.addTo(map);
-		
+
 	const getData = async () => {
-		filenames.forEach(async (filename) => {
-			const res = await fetch(`/data/${filename}.geojson`);
-			controlLayers.addOverlay(L.geoJSON(await res.json()), filename);
+		files.forEach(async (file) => {
+			const res = await fetch(`/data/${file.filename}.geojson`);
+			controlLayers.addOverlay(
+				L.geoJSON(await res.json(), { style: { color: file.color } }),
+				file.title
+			);
 		});
 	};
 	await getData();
