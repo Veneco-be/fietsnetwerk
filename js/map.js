@@ -28,7 +28,7 @@
 
 	const files = [
 		{ filename: 'BFF', color: '#3eb1c8', title: 'BFF' },
-		{ filename: 'LFF', color: '#a4c8e1', title: 'LFF' },
+		{ filename: 'LFF', color: '#a1d6ca', title: 'LFF' },
 		{
 			filename: 'fietspotentieel_volledig',
 			color: '#eca154',
