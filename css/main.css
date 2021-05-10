@@ -18,6 +18,10 @@ body,
 	max-width: 15rem;
 }
 
+.leaflet-popup-content p {
+	margin: 0 !important;
+}
+
 .leaflet-control-layers-overlays label div {
 	position: relative;
 }

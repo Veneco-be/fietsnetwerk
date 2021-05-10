@@ -42,6 +42,12 @@
 		},
 	];
 
+	function onEachFeatureWrapper(title) {
+		return function onEachFeature(feature, layer) {
+			layer.bindPopup(getPopupContent(feature, title));
+		};
+	}
+
 	const controlLayers = L.control
 		.layers(
 			{ 'Lichte achtergrond': light, 'Donkere achtergrond': dark },
@@ -54,10 +60,10 @@
 		files.forEach(async (file) => {
 			const res = await fetch(`data/${file.filename}.geojson`);
 
-			const options =
-				file.filename === 'fietspotentieel_volledig'
-					? {
-							style: (feature) => ({
+			const options = {
+				style:
+					file.filename === 'fietspotentieel_volledig'
+						? (feature) => ({
 								color:
 									feature.properties.FIETSPOT > 500
 										? '#e78523'
@@ -65,9 +71,10 @@
 										? '#eca154'
 										: '#f3c291',
 								weight: 3 + (feature.properties.FIETSPOT / maxPotential) * 10,
-							}),
-					  }
-					: { style: { color: file.color } };
+						  })
+						: { color: file.color },
+				onEachFeature: onEachFeatureWrapper(file.title),
+			};
 
 			controlLayers.addOverlay(
 				L.geoJSON(await res.json(), options),
