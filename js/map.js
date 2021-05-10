@@ -70,7 +70,10 @@
 										: feature.properties.FIETSPOT > 250
 										? '#eca154'
 										: '#f3c291',
-								weight: 3 + (feature.properties.FIETSPOT / maxPotential) * 10,
+								weight:
+									3 +
+									(feature.properties.FIETSPOT / maxPotential) *
+										30,
 						  })
 						: { color: file.color },
 				onEachFeature: onEachFeatureWrapper(file.title),
