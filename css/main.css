@@ -5,9 +5,10 @@
 input[type='checkbox'].leaflet-control-layers-selector::before {
 	content: '';
 	display: block;
-	width: 0.6em;
-	height: 0.6em;
+	width: 0.7em;
+	height: 0.7em;
 	border-radius: 2px;
+	background: #fff;
 }
 
 .leaflet-control-layers-overlays
