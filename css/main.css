@@ -2,71 +2,75 @@
 	height: 32rem;
 }
 
-input[type='checkbox'].leaflet-control-layers-selector::before {
-	content: '';
-	display: block;
-	width: 0.7em;
-	height: 0.7em;
-	border-radius: 2px;
-	background: #fff;
+.leaflet-control-layers-overlays label div {
+	position: relative;
 }
 
-.leaflet-control-layers-overlays
-	label:first-child
-	input[type='checkbox'].leaflet-control-layers-selector::before {
+.leaflet-control-layers-overlays span::before {
+	content: '';
+	display: block;
+	width: 1em;
+	height: 1em;
+	border-radius: 2px;
+	background: #fff;
+	position: absolute;
+	z-index: 10;
+	top: 2px;
+	left: 2px;
+	border: 2px solid;
+}
+
+.leaflet-control-layers-overlays label:first-child span::before {
 	border: 2px solid #3eb1c8;
 }
 
-.leaflet-control-layers-overlays
-	label:nth-child(2)
-	input[type='checkbox'].leaflet-control-layers-selector::before {
+.leaflet-control-layers-overlays label:nth-child(2) span::before {
 	border: 2px solid #eca154;
 }
 
-.leaflet-control-layers-overlays
-	label:nth-child(3)
-	input[type='checkbox'].leaflet-control-layers-selector::before {
+.leaflet-control-layers-overlays label:nth-child(3) span::before {
 	border: 2px solid #a4c8e1;
 }
 
-.leaflet-control-layers-overlays
-	label:nth-child(4)
-	input[type='checkbox'].leaflet-control-layers-selector::before {
+.leaflet-control-layers-overlays label:nth-child(4) span::before {
 	border: 2px solid #a1d6ca;
 }
 
-.leaflet-control-layers-overlays
-	label:nth-child(5)
-	input[type='checkbox'].leaflet-control-layers-selector::before {
+.leaflet-control-layers-overlays label:nth-child(5) span::before {
 	border: 2px solid #a9c47f;
 }
 
 .leaflet-control-layers-overlays
 	label:first-child
-	input[type='checkbox'].leaflet-control-layers-selector:checked::before {
+	input:checked
+	+ span::before {
 	background: #3eb1c8 url('../checkbox.svg');
 }
 
 .leaflet-control-layers-overlays
 	label:nth-child(2)
-	input[type='checkbox'].leaflet-control-layers-selector:checked::before {
+	input:checked
+	+ span::before {
 	background: #eca154 url('../checkbox.svg');
 }
 
 .leaflet-control-layers-overlays
 	label:nth-child(3)
-	input[type='checkbox'].leaflet-control-layers-selector:checked::before {
+	input:checked
+	+ span::before {
 	background: #a4c8e1 url('../checkbox.svg');
 }
 
 .leaflet-control-layers-overlays
 	label:nth-child(4)
-	input[type='checkbox'].leaflet-control-layers-selector:checked::before {
+	input:checked
+	+ span::before {
 	background: #a1d6ca url('../checkbox.svg');
 }
 
 .leaflet-control-layers-overlays
 	label:nth-child(5)
-	input[type='checkbox'].leaflet-control-layers-selector:checked::before {
+	input:checked
+	+ span::before {
 	background: #a9c47f url('../checkbox.svg');
 }
