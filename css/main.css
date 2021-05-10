@@ -6,6 +6,10 @@
 	position: relative;
 }
 
+.leaflet-control-layers-overlays input {
+	opacity: 0;
+}
+
 .leaflet-control-layers-overlays span::before {
 	content: '';
 	display: block;
